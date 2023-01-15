@@ -5,8 +5,10 @@ import time
 
 name = 'D:/airtravel.xlsx'
 
-
-def read_wb():
+'''
+Function to read a CSV and create an Excel ".xlsx" file with the contents.
+'''
+def csv_to_excel():
     wb = openpyxl.Workbook()
     ws = wb.active
     # CSV file can be downloaded from "https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html"
@@ -19,4 +21,4 @@ def read_wb():
 
 
 if __name__ == '__main__':
-    read_wb()
+    csv_to_excel()
