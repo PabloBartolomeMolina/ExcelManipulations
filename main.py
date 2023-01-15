@@ -5,9 +5,8 @@ import time
 
 name = 'D:/Python_Projects/ExcelManipulations/airtravel.xlsx'
 
-'''
-Function to read a CSV and create an Excel ".xlsx" file with the contents.
-'''
+
+# Function to read a CSV and create an Excel ".xlsx" file with the contents.
 def csv_to_excel():
     wb = openpyxl.Workbook()
     ws = wb.active
@@ -20,5 +19,6 @@ def csv_to_excel():
     print(f'File created, {name}')
 
 
+# Main entry point.
 if __name__ == '__main__':
     csv_to_excel()
