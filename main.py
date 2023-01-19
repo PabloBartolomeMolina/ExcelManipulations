@@ -1,9 +1,7 @@
 import openpyxl
-import csv
-
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font, GradientFill, Alignment
-import time
+import csv
 
 excel_file = 'D:/Python_Projects/ExcelManipulations/airtravel.xlsx'
 csv_file = 'D:/Python_Projects/ExcelManipulations/airtravel.csv'
