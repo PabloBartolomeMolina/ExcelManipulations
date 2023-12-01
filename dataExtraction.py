@@ -1,11 +1,10 @@
 import csv, openpyxl
 
-excel_file = 'D:/Python_Projects/ExcelManipulations/airtravel.xlsx'
 csv_file = 'D:/Python_Projects/ExcelManipulations/airtravel.csv'
 
 
 # Function to read a CSV and create an Excel ".xlsx" file with the contents.
-def csv_to_excel():
+def csv_to_excel(filename):
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = 'Raw data'
@@ -14,5 +13,5 @@ def csv_to_excel():
         reader = csv.reader(f, delimiter=',')   # Careful with the delimiter of your CSV.
         for row in reader:
             ws.append(row)
-    wb.save(excel_file)
-    print(f'File created, {excel_file}')
+    wb.save(filename)
+    print(f'File created, {filename}')

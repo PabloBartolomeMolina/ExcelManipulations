@@ -1,12 +1,10 @@
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font, GradientFill, Alignment
 
-excel_file = 'D:/Python_Projects/ExcelManipulations/airtravel.xlsx'
-
 
 # Open Workbook and modify it.
-def excel_rework():
-    wb = load_workbook(excel_file)
+def excel_rework(filename):
+    wb = load_workbook(filename)
     ws = wb.active
     print('Contents:')
     print(ws)
@@ -19,12 +17,12 @@ def excel_rework():
     # Gradient color for one of the cells.
     ws['B5'].fill = fill = GradientFill(stop=("FFFFFF", "000000"))
 
-    wb.save(excel_file)
+    wb.save(filename)
 
 
 # Set format in the first row in which the headers are placed.
-def format_header_horizontal():
-    wb = load_workbook(excel_file)
+def format_header_horizontal(filename):
+    wb = load_workbook(filename)
     # Iterate through each worksheet
     for sheet_name in wb.sheetnames:
         ws = wb[sheet_name]
@@ -34,12 +32,12 @@ def format_header_horizontal():
             for cell in row:
                 cell.font = Font(name='Arial', size=12, bold=True)
                 cell.fill = PatternFill(start_color='7CAAF0', end_color='7CAAF0', fill_type='solid')
-    wb.save(excel_file)
+    wb.save(filename)
 
 
 # Set format in the first column in which the headers are placed.
-def format_header_vertical():
-    wb = load_workbook(excel_file)
+def format_header_vertical(filename):
+    wb = load_workbook(filename)
     # Iterate through each worksheet
     for sheet_name in wb.sheetnames:
         ws = wb[sheet_name]
@@ -49,4 +47,4 @@ def format_header_vertical():
             for cell in row:
                 cell.font = Font(name='Arial', size=12, bold=True)
                 cell.fill = PatternFill(start_color='7CAAF0', end_color='7CAAF0', fill_type='solid')
-    wb.save(excel_file)
+    wb.save(filename)
