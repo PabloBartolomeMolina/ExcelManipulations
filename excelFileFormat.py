@@ -31,3 +31,16 @@ def excel_rework():
     ws['A5'].fill = fill = GradientFill(stop=("FFFFFF", "000000"))
 
     wb.save(excel_file)
+
+
+def format_header():
+    wb = load_workbook(excel_file)
+    # Iterate through each worksheet
+    for sheet_name in wb.sheetnames:
+        ws = wb[sheet_name]
+
+        # Apply the desired format to each cell in the worksheet
+        for row in ws.iter_rows(min_row=1, max_row=ws.max_row, min_col=1, max_col=ws.max_column):
+            for cell in row:
+                cell.font = Font(name='Arial', size=12, bold=True)
+                cell.fill = PatternFill(start_color='7CAAF0', end_color='7CAAF0', fill_type='solid')
