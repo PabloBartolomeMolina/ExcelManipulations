@@ -34,7 +34,7 @@ def format_header_horizontal(filename):
     for sheet_name in wb.sheetnames:
         ws = wb[sheet_name]
 
-        # Apply the desired format to each cell in the worksheet
+        # Apply the desired format 1st column containing headers.
         for row in ws.iter_rows(min_row=1, max_row=1, min_col=1, max_col=ws.max_column):
             for cell in row:
                 cell.font = Font(name='Arial', size=12, bold=True)
@@ -49,9 +49,38 @@ def format_header_vertical(filename):
     for sheet_name in wb.sheetnames:
         ws = wb[sheet_name]
 
-        # Apply the desired format to each cell in the worksheet
+        # Apply the desired format 1st row containing headers.
         for row in ws.iter_rows(min_row=1, max_row=ws.max_row, min_col=1, max_col=1):
             for cell in row:
                 cell.font = Font(name='Arial', size=12, bold=True)
                 cell.fill = PatternFill(start_color=colorInitHeader, end_color=colorEndHeader, fill_type='solid')
     wb.save(filename)
+
+
+# Function to determine if the worksheet headers are horizontal or vertical.
+# Assumption is to have more data than headers.
+def headers_direction(ws):
+    if ws.max_row > ws.max_column:
+        # Apply the desired format 1st column containing headers.
+        for row in ws.iter_rows(min_row=1, max_row=ws.max_row, min_col=1, max_col=1):
+            for cell in row:
+                cell.font = Font(name='Arial', size=12, bold=True)
+                cell.fill = PatternFill(start_color=colorInitHeader, end_color=colorEndHeader, fill_type='solid')
+    elif ws.max_row < ws.max_column:
+        # Apply the desired format 1st row containing headers.
+        for row in ws.iter_rows(min_row=1, max_row=1, min_col=1, max_col=ws.max_column):
+            for cell in row:
+                cell.font = Font(name='Arial', size=12, bold=True)
+                cell.fill = PatternFill(start_color=colorInitHeader, end_color=colorEndHeader, fill_type='solid')
+    else:
+        return "inconclusive"
+
+
+# Function to format header's cells in each according to format of the worksheet.
+def format_header_specific(filename):
+    wb = load_workbook(filename)
+    # Iterate through each worksheet
+    for sheet_name in wb.sheetnames:
+        ws = wb[sheet_name]
+        headers_direction(ws)
+        wb.save(filename)
