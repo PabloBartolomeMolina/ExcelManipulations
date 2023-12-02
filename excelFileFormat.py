@@ -73,7 +73,8 @@ def headers_direction(ws):
                 cell.font = Font(name='Arial', size=12, bold=True)
                 cell.fill = PatternFill(start_color=colorInitHeader, end_color=colorEndHeader, fill_type='solid')
     else:
-        # Inconclusive result
+        # Inconclusive result.
+        # Can be determined with the title of the worksheet.
         pass
 
 
