@@ -10,7 +10,6 @@ colorEndHeader = '7CAAF0'
 # Open Workbook and modify it.
 def excel_rework(filename):
     wb = load_workbook(filename)
-    ws = wb.active
     print('Contents:')
     # Iterate through each worksheet.
     for sheet_name in wb.sheetnames:
@@ -45,7 +44,7 @@ def format_header_horizontal(filename):
 # Set format in the first column in which the headers are placed.
 def format_header_vertical(filename):
     wb = load_workbook(filename)
-    # Iterate through each worksheet
+    # Iterate through each worksheet.
     for sheet_name in wb.sheetnames:
         ws = wb[sheet_name]
 
