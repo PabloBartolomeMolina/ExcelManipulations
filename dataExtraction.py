@@ -1,4 +1,4 @@
-import csv, openpyxl
+import csv, openpyxl, shutil
 
 csv_file = 'D:/Python_Projects/ExcelManipulations/airtravel.csv'
 csv_file2 = 'D:/Python_Projects/ExcelManipulations/airtravel_horizontal.csv'
@@ -21,3 +21,14 @@ def csv_to_excel(filename):
             ws.append(row)
     wb.save(filename)
     print(f'File created, {filename}')
+
+
+# Function to read an Excel file and create a second one with the same contents and new name.
+def rename_excel(input_file, output_file):
+    try:
+        # Copy the file without accessing its content
+        shutil.copyfile(input_file, output_file)
+        print(f"File '{input_file}' successfully copied as '{output_file}'.")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
