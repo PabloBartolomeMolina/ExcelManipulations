@@ -74,6 +74,18 @@ def headers_direction(ws):
     else:
         # Inconclusive result. All cases should be already be covered in the previous cases, but in the case we have a
         # squared matrix with headers in both vertical and horizontal axis, we can treat it here.
+        if "Matrix" in ws.title:
+            # Apply the desired format 1st column containing headers.
+            for row in ws.iter_rows(min_row=1, max_row=ws.max_row, min_col=1, max_col=1):
+                for cell in row:
+                    cell.font = Font(name='Arial', size=12, bold=True)
+                    cell.fill = PatternFill(start_color=colorInitHeader, end_color=colorEndHeader, fill_type='solid')
+            # Apply the desired format 1st row containing headers.
+            for row in ws.iter_rows(min_row=1, max_row=1, min_col=1, max_col=ws.max_column):
+                for cell in row:
+                    cell.font = Font(name='Arial', size=12, bold=True)
+                    cell.fill = PatternFill(start_color=colorInitHeader, end_color=colorEndHeader,
+                                            fill_type='solid')
         pass
 
 
