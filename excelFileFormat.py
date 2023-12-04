@@ -1,6 +1,5 @@
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font, GradientFill
-import graphCreator
 
 
 # Define color for init and end for gradient coloring of headers cells.
@@ -58,6 +57,7 @@ def format_header_vertical(filename):
     wb.save(filename)
 
 
+
 # Function to determine if the worksheet headers are horizontal or vertical.
 # Assumption is to have more data than headers.
 def headers_direction(ws):
@@ -99,11 +99,3 @@ def format_header_specific(filename):
         ws = wb[sheet_name]
         headers_direction(ws)
         wb.save(filename)
-
-
-# Generic function for charts.
-# Take as input parameter the type of chart to insert in the Excel file (to come) and the filename.
-def chart(filename, type):
-    wb = load_workbook(filename)
-    wb.save()
-
