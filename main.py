@@ -1,4 +1,5 @@
-import excelFileFormat, dataExtraction
+import dataExtraction
+import excelFileFormat
 
 excel_file = 'D:/Python_Projects/ExcelManipulations/airtravel.xlsx'
 
