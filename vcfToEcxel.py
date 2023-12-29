@@ -2,6 +2,7 @@ import vobject
 import openpyxl
 
 
+# Get the data from the VCF file.
 def vcf_to_excel(vcf_file, excel_file):
     # Load VCF file
     with open(vcf_file, 'r', encoding='utf-8') as vcf_data:
@@ -20,6 +21,11 @@ def vcf_to_excel(vcf_file, excel_file):
                 current_vcard = ''
     # Sort the vcard_list based on the Name (first column)
     vcard_list.sort(key=lambda vcard_data: vobject.readOne(vcard_data).fn.value.lower() if hasattr(vobject.readOne(vcard_data), 'fn') else '')
+    data_to_Excel(vcard_list, excel_file)
+
+
+# Store the extracted data into an Excel file.
+def data_to_Excel(vcard_list, excel_file):
     # Create Excel workbook and sheet
     workbook = openpyxl.Workbook()
     sheet = workbook.active
