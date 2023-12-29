@@ -1,5 +1,3 @@
-import dataExtraction
-import excelFileFormat
 import vcfToEcxel
 
 excel_file = 'D:/Python_Projects/ExcelManipulations/airtravel.xlsx'
